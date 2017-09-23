@@ -1,0 +1,47 @@
+{% include header.html %}
+
+<div class="jumbotron">
+  <h1>The Daily Briefing -- Home</h1>
+  <p>Biblical insights on today's news</p>
+
+  <form>
+    <p>Sign up to receive our daily newsletter!</p>
+    <div class="form-control">
+      <input type="text" placeholder="you@yourdomain.com" />
+    </div>
+  </form>
+
+</div>
+
+<div class="row">
+  <div class="col-md-9">
+    <div class="row">
+
+      {% for post in site.posts %}
+      <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+          <h3>{{ post.title }}</h3>
+          {{ post.preamble | markdownify }}
+          <p><a href="{{ post.url }}" class="btn btn-primary" role="button">Read more &raquo;</a></p>
+        </div>
+      </div>
+      {% endfor %}
+
+    </div>
+  </div>
+  <div class="col-md-3">
+    {{content}}
+
+    <h3>Authors</h3>
+    <ul>
+      {% for author in site.authors %}
+      <li><a href="{{ author.url }}">{{author.name}} -- {{author.title}}</a></li>
+      {% endfor %}
+    </ul>
+
+  </div>
+
+</div>
+
+
+{% include footer.html %}
